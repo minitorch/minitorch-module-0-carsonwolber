@@ -23,6 +23,7 @@ from minitorch.operators import (
     relu,
     relu_back,
     sigmoid,
+    is_close
 )
 
 from .strategies import assert_close, small_floats
@@ -89,6 +90,12 @@ def test_eq(a: float) -> None:
     assert eq(a, a) == 1.0
     assert eq(a, a - 1.0) == 0.0
     assert eq(a, a + 1.0) == 0.0
+
+@pytest.mark.task0_1
+def carsons_tests(a: float, b: float):
+    assert(lt(a-b, a))
+    assert(is_close(a, a-.0001))
+    
 
 
 # ## Task 0.2 - Property Testing
