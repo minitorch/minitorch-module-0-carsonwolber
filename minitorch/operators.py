@@ -37,9 +37,7 @@ def is_close(a: float, b: float):
   return abs(a - b) < .01
 # - sigmoid
 def sigmoid(x: float):
-  if x >= 0:
-    return 1.0 / (1.0 + math.e ** -x)
-  return math.e**x / (1.0 + math.e**x)
+  return 1.0 / (1.0 + math.e ** -x)
 # - relu
 def relu(x: float):
   return max(x, 0)
