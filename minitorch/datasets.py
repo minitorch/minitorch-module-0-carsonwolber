@@ -4,7 +4,10 @@ from dataclasses import dataclass
 from typing import List, Tuple
 
 
-def make_pts(N):
+def make_pts(N): # type: ignore
+    """
+    produces a scatter of [N] random cartesian coordinates 
+    """
     X = []
     for i in range(N):
         x_1 = random.random()
@@ -20,7 +23,11 @@ class Graph:
     y: List[int]
 
 
-def simple(N):
+def simple(N): # type: ignore
+    """
+    produces a graph of N scatter plots, and a binary list indicating whether 
+    or not the x coord at the coresponding indice is less than 0.5
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -29,7 +36,11 @@ def simple(N):
     return Graph(N, X, y)
 
 
-def diag(N):
+def diag(N): # type: ignore
+    """
+    produces a graph of N scatter plots, and a binary list indicating whether 
+    or not the sum of the x-coords is less than 0.5
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -38,7 +49,11 @@ def diag(N):
     return Graph(N, X, y)
 
 
-def split(N):
+def split(N): # type: ignore
+    """
+    produces a graph where the dependent portion is 1
+    if x-coord is outside (0.2, 0.8)
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -47,7 +62,11 @@ def split(N):
     return Graph(N, X, y)
 
 
-def xor(N):
+def xor(N): # type: ignore 
+    """
+    produces a graph where Y=1 if the coordinates (x,y) are such that 1 is less
+    than 0.5 and the other is greater than 0.5  
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -56,7 +75,10 @@ def xor(N):
     return Graph(N, X, y)
 
 
-def circle(N):
+def circle(N): # type: ignore
+    """
+    makes a circle
+    """
     X = make_pts(N)
     y = []
     for x_1, x_2 in X:
@@ -66,12 +88,15 @@ def circle(N):
     return Graph(N, X, y)
 
 
-def spiral(N):
+def spiral(N): # type: ignore
+    """
+    makes a spiral
+    """
 
-    def x(t):
+    def x(t): # type: ignore
         return t * math.cos(t) / 20.0
 
-    def y(t):
+    def y(t): # type: ignore
         return t * math.sin(t) / 20.0
     X = [(x(10.0 * (float(i) / (N // 2))) + 0.5, y(10.0 * (float(i) / (N //
         2))) + 0.5) for i in range(5 + 0, 5 + N // 2)]
