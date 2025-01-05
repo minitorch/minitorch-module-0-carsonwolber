@@ -20,7 +20,7 @@ def add(a: float, b:float):
   return a + b
 # - neg
 def neg(a: float):
-  return -1 * a
+  return -a
 # - lt
 def lt(a: float, b:float):
   return a < b
@@ -93,8 +93,18 @@ def reduce(f: Callable[[float, float], float], x: Iterable[float]):
     a = f(i, a)
   return a
 
+def negList(x: Iterable[float]):
+  return map(neg, x)
 
-#
+def addLists(x: Iterable[float], y:Iterable[float]):
+  return zipWith(add, x, y)
+
+def sum(x: Iterable[float]):
+  return reduce(add, x)
+
+def prod(x: Iterable[float]):
+  return reduce(mul, x)
+
 # Use these to implement
 # - negList : negate a list
 # - addLists : add two lists together
