@@ -71,9 +71,6 @@ def relu_back(x: float, y:float):
 # $f(x) = |x - y| < 1e-2$
 
 
-# TODO: Implement for Task 0.1.
-
-
 # ## Task 0.3
 
 # Small practice library of elementary higher-order functions.
@@ -82,6 +79,21 @@ def relu_back(x: float, y:float):
 # - map
 # - zipWith
 # - reduce
+
+def map(fn: Callable[[float]], ls: Iterable[float]):
+  return[fn(x) for x  in ls]
+
+def zipWith(f: Callable[[float, float], float], x: Iterable[float], y: Iterable[float]):
+  return [f(i,j) for i,j in zip(x,y)]
+
+def reduce(f: Callable[[float, float], float], x: Iterable[float]):
+  acc = iter(x)
+  a = next(acc)
+  for i in acc:
+    a = f(i, a)
+  return a
+
+
 #
 # Use these to implement
 # - negList : negate a list
@@ -89,5 +101,3 @@ def relu_back(x: float, y:float):
 # - sum: sum lists
 # - prod: take the product of lists
 
-
-# TODO: Implement for Task 0.3.
