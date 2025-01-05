@@ -80,18 +80,21 @@ def relu_back(x: float, y:float):
 # - zipWith
 # - reduce
 
-def map(fn: Callable[[float]], ls: Iterable[float]):
+def map(fn: Callable[[float], float], ls: Iterable[float]):
   return[fn(x) for x  in ls]
 
 def zipWith(f: Callable[[float, float], float], x: Iterable[float], y: Iterable[float]):
   return [f(i,j) for i,j in zip(x,y)]
 
 def reduce(f: Callable[[float, float], float], x: Iterable[float]):
-  acc = iter(x)
-  a = next(acc)
-  for i in acc:
-    a = f(i, a)
-  return a
+  if x: 
+    acc = iter(x)
+    a = next(acc)
+    for i in acc:
+      a = f(i, a)
+    return a
+  else:
+    return 0
 
 def negList(x: Iterable[float]):
   return map(neg, x)
